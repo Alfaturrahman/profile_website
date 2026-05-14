@@ -10,28 +10,28 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto w-full">
       <motion.div
-        className="mb-16"
+        className="mb-10 sm:mb-14"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65 }}
+        transition={{ duration: 0.6 }}
       >
-        <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-6">
+        <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4 sm:mb-6">
           // backend and full-stack developer
         </p>
-        <h1 className="text-6xl lg:text-7xl font-black text-white leading-[1.02] tracking-tight mb-8">
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.04] tracking-tight mb-5 sm:mb-8">
           I build<br />
           <span className="gradient-text">backend</span><br />
           systems.
         </h1>
-        <p className="text-[#64748b] text-lg leading-relaxed max-w-lg">
+        <p className="text-[#64748b] text-base sm:text-lg leading-relaxed max-w-lg">
           Scalable REST APIs, full-stack web apps, and mobile solutions — from concept to deployment.
         </p>
       </motion.div>
 
       <motion.div
-        className="flex items-center gap-6 mb-16 pl-6 border-l-2 border-indigo-500"
+        className="flex items-center gap-4 sm:gap-6 mb-10 sm:mb-14 pl-4 sm:pl-6 border-l-2 border-indigo-500"
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.25 }}
@@ -39,17 +39,17 @@ export default function AboutSection() {
         <img
           src="/Profile_pict.jpeg"
           alt="Alfaturrahman"
-          className="w-16 h-16 rounded-2xl object-cover border border-indigo-500/25 shadow-lg shadow-indigo-500/10"
+          className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl object-cover border border-indigo-500/25 shadow-lg shadow-indigo-500/10 shrink-0"
         />
         <div>
-          <h2 className="text-white font-bold text-xl">Alfaturrahman</h2>
+          <h2 className="text-white font-bold text-lg sm:text-xl">Alfaturrahman</h2>
           <p className="text-[#64748b] text-sm mt-0.5">Batam, Indonesia</p>
-          <div className="flex flex-wrap gap-2 mt-2.5">
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold bg-green-500/10 border border-green-500/20 text-green-400 px-2.5 py-1 rounded-full">
+          <div className="flex flex-wrap gap-2 mt-2">
+            <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold bg-green-500/10 border border-green-500/20 text-green-400 px-2.5 py-1 rounded-full">
               <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
               Open for Remote and Full-time
             </span>
-            <span className="text-[11px] font-bold bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 px-2.5 py-1 rounded-full">
+            <span className="text-[10px] sm:text-[11px] font-bold bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 px-2.5 py-1 rounded-full">
               Backend / Full-Stack
             </span>
           </div>
@@ -57,7 +57,7 @@ export default function AboutSection() {
       </motion.div>
 
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
+        className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
@@ -69,33 +69,10 @@ export default function AboutSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 + i * 0.07 }}
           >
-            <p className="text-5xl font-black gradient-text leading-none">{s.value}</p>
-            <p className="text-[#334155] text-xs font-bold mt-2 uppercase tracking-widest">{s.label}</p>
+            <p className="text-4xl sm:text-5xl font-black gradient-text leading-none">{s.value}</p>
+            <p className="text-[#334155] text-[10px] sm:text-xs font-bold mt-2 uppercase tracking-widest">{s.label}</p>
           </motion.div>
         ))}
-      </motion.div>
-
-      <motion.div
-        className="grid md:grid-cols-2 gap-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.55 }}
-      >
-        <img
-          src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Alfaturrahman&theme=tokyonight"
-          alt="GitHub Stats"
-          className="w-full rounded-2xl"
-        />
-        <img
-          src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Alfaturrahman&theme=tokyonight"
-          alt="Top Languages"
-          className="w-full rounded-2xl"
-        />
-        <img
-          src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Alfaturrahman&theme=tokyonight"
-          alt="Profile Details"
-          className="w-full rounded-2xl md:col-span-2"
-        />
       </motion.div>
     </div>
   );

@@ -2,21 +2,32 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AboutSection from "./components/AboutSection";
+import GitHubStatsSection from "./components/GitHubStatsSection";
 import ProfileSection from "./components/ProfileSection";
 import ProjectsSection from "./components/ProjectsSection";
 import ContactSection from "./components/ContactSection";
 
 const SECTIONS = [
-  { id: "about",    label: "About",    component: AboutSection    },
-  { id: "skills",   label: "Skills",   component: ProfileSection  },
-  { id: "projects", label: "Projects", component: ProjectsSection },
-  { id: "contact",  label: "Contact",  component: ContactSection  },
+  { id: "about",   label: "About",      short: "AB", component: AboutSection       },
+  { id: "github",  label: "GitHub",     short: "GH", component: GitHubStatsSection },
+  { id: "skills",  label: "Skills",     short: "SK", component: ProfileSection     },
+  { id: "projects",label: "Projects",   short: "PR", component: ProjectsSection    },
+  { id: "contact", label: "Contact",    short: "CT", component: ContactSection     },
 ];
 
-const variants = {
-  enter:  (dir) => ({ x: dir > 0 ? "65%" : "-65%", opacity: 0, scale: 0.96 }),
+const slideVariants = {
+  enter:  (dir) => ({ x: dir > 0 ? "60%" : "-60%", opacity: 0, scale: 0.97 }),
   center: { x: 0, opacity: 1, scale: 1 },
-  exit:   (dir) => ({ x: dir > 0 ? "-65%" : "65%", opacity: 0, scale: 0.96 }),
+  exit:   (dir) => ({ x: dir > 0 ? "-60%" : "60%", opacity: 0, scale: 0.97 }),
+};
+
+const bounceLeft = {
+  x: [0, -6, 0, -4, 0],
+  transition: { duration: 1.4, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" },
+};
+const bounceRight = {
+  x: [0, 6, 0, 4, 0],
+  transition: { duration: 1.4, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" },
 };
 
 export default function Home() {
@@ -39,41 +50,42 @@ export default function Home() {
   }, [current]);
 
   const Section = SECTIONS[current].component;
+  const canPrev = current > 0;
+  const canNext = current < SECTIONS.length - 1;
 
   return (
-    <div className="h-screen bg-[#0a0f1e] bg-grid text-[#f1f5f9] flex flex-col overflow-hidden">
+    <div className="h-[100dvh] bg-[#0a0f1e] bg-grid text-[#f1f5f9] flex flex-col overflow-hidden">
+      {/* Ambient glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600 opacity-5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-600 opacity-5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-indigo-600 opacity-5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-violet-600 opacity-5 rounded-full blur-3xl" />
       </div>
 
-      {/* Header */}
-      <header className="shrink-0 flex items-center justify-between px-6 sm:px-10 h-16 border-b border-white/5 bg-[#070c18]/80 backdrop-blur-md z-20">
-        <div className="flex items-center gap-3">
+      {/* ── Header ── */}
+      <header className="shrink-0 flex items-center justify-between px-4 sm:px-8 h-14 sm:h-16 border-b border-white/5 bg-[#070c18]/80 backdrop-blur-md z-20">
+        {/* Brand */}
+        <div className="flex items-center gap-2.5">
           <div className="relative shrink-0">
             <img
               src="/Profile_pict.jpeg"
               alt="Alfaturrahman"
-              className="w-8 h-8 rounded-xl object-cover border border-indigo-500/30"
+              className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl object-cover border border-indigo-500/30"
             />
-            <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-400 rounded-full border border-[#070c18]" />
+            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-400 rounded-full border border-[#070c18]" />
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-white font-bold text-sm">Alfaturrahman</span>
-            <span className="text-[#1e293b] text-xs font-mono hidden md:block">
-              .{SECTIONS[current].id}
-            </span>
-          </div>
+          <span className="text-white font-bold text-sm">Alfaturrahman</span>
+          <span className="text-[#1e2d3d] text-xs font-mono hidden sm:block">.{SECTIONS[current].id}</span>
         </div>
 
-        <nav className="flex items-center gap-1">
+        {/* Nav */}
+        <nav className="flex items-center gap-0.5">
           {SECTIONS.map((s, i) => (
             <button
               key={s.id}
               onClick={() => go(i)}
-              className={`relative text-xs font-bold px-3 py-1.5 rounded-lg transition-all ${
-                i === current ? "text-white" : "text-[#2d3d52] hover:text-[#64748b]"
-              }`}
+              className={`relative text-xs font-bold rounded-lg transition-all
+                px-1.5 py-1 sm:px-3 sm:py-1.5
+                ${i === current ? "text-white" : "text-[#1e2d3d] hover:text-[#64748b]"}`}
             >
               {i === current && (
                 <motion.span
@@ -82,73 +94,75 @@ export default function Home() {
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
               )}
-              <span className="relative">{s.label}</span>
+              <span className="relative hidden sm:inline">{s.label}</span>
+              <span className="relative sm:hidden">{s.short}</span>
             </button>
           ))}
         </nav>
       </header>
 
-      {/* Slide Content */}
+      {/* ── Slide Content ── */}
       <div className="flex-1 relative overflow-hidden z-10">
+        {/* Left arrow overlay */}
+        {canPrev && (
+          <motion.button
+            onClick={() => go(current - 1)}
+            animate={bounceLeft}
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#0d1424]/90 border border-white/8 hover:border-indigo-500/50 hover:bg-indigo-500/15 flex items-center justify-center text-[#334155] hover:text-indigo-300 transition-all text-base shadow-lg backdrop-blur-sm"
+          >
+            ←
+          </motion.button>
+        )}
+        {/* Right arrow overlay */}
+        {canNext && (
+          <motion.button
+            onClick={() => go(current + 1)}
+            animate={bounceRight}
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#0d1424]/90 border border-white/8 hover:border-indigo-500/50 hover:bg-indigo-500/15 flex items-center justify-center text-[#334155] hover:text-indigo-300 transition-all text-base shadow-lg backdrop-blur-sm"
+          >
+            →
+          </motion.button>
+        )}
+
         <AnimatePresence custom={dir} mode="wait">
           <motion.div
             key={current}
             custom={dir}
-            variants={variants}
+            variants={slideVariants}
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.38, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="absolute inset-0 overflow-y-auto"
           >
-            <div className="min-h-full px-6 sm:px-10 lg:px-20 py-10 max-w-5xl mx-auto">
+            <div className="min-h-full px-10 sm:px-14 lg:px-20 py-8 sm:py-10 max-w-5xl mx-auto">
               <Section />
             </div>
           </motion.div>
         </AnimatePresence>
       </div>
 
-      {/* Footer nav */}
-      <footer className="shrink-0 flex items-center justify-between px-6 sm:px-10 h-14 border-t border-white/5 bg-[#070c18]/60 backdrop-blur-md z-20">
-        <button
-          onClick={() => go(current - 1)}
-          disabled={current === 0}
-          className="flex items-center gap-2 text-xs font-bold text-[#334155] hover:text-white disabled:opacity-20 disabled:pointer-events-none transition-all group"
-        >
-          <span className="w-7 h-7 rounded-lg bg-[#0d1424] border border-white/8 flex items-center justify-center group-hover:border-indigo-500/40 group-hover:bg-indigo-500/10 transition-all text-sm">
-            ←
-          </span>
-          <span className="hidden sm:block">{current > 0 ? SECTIONS[current - 1].label : ""}</span>
-        </button>
-
-        <div className="flex items-center gap-3">
+      {/* ── Footer ── */}
+      <footer className="shrink-0 flex items-center justify-center gap-4 sm:gap-6 px-4 h-12 sm:h-14 border-t border-white/5 bg-[#070c18]/60 backdrop-blur-md z-20">
+        {/* Dot indicators */}
+        <div className="flex items-center gap-2">
           {SECTIONS.map((_, i) => (
-            <button key={i} onClick={() => go(i)}>
+            <button key={i} onClick={() => go(i)} aria-label={`Go to slide ${i + 1}`}>
               <motion.div
                 animate={{
-                  width: i === current ? 28 : 6,
+                  width: i === current ? 24 : 5,
                   backgroundColor: i === current ? "#818cf8" : "#1e293b",
+                  opacity: i === current ? 1 : 0.6,
                 }}
                 transition={{ type: "spring", stiffness: 500, damping: 40 }}
-                className="h-1.5 rounded-full hover:opacity-70"
+                className="h-1.5 rounded-full"
               />
             </button>
           ))}
-          <span className="text-[#1e293b] text-[10px] font-mono ml-1 tabular-nums">
-            {String(current + 1).padStart(2, "0")}/{String(SECTIONS.length).padStart(2, "0")}
-          </span>
         </div>
-
-        <button
-          onClick={() => go(current + 1)}
-          disabled={current === SECTIONS.length - 1}
-          className="flex items-center gap-2 text-xs font-bold text-[#334155] hover:text-white disabled:opacity-20 disabled:pointer-events-none transition-all group"
-        >
-          <span className="hidden sm:block">{current < SECTIONS.length - 1 ? SECTIONS[current + 1].label : ""}</span>
-          <span className="w-7 h-7 rounded-lg bg-[#0d1424] border border-white/8 flex items-center justify-center group-hover:border-indigo-500/40 group-hover:bg-indigo-500/10 transition-all text-sm">
-            →
-          </span>
-        </button>
+        <span className="text-[#1e293b] text-[10px] font-mono tabular-nums">
+          {String(current + 1).padStart(2, "0")}/{String(SECTIONS.length).padStart(2, "0")}
+        </span>
       </footer>
     </div>
   );

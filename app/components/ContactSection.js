@@ -31,7 +31,7 @@ export default function ContactSection() {
     <div className="max-w-4xl mx-auto">
       <motion.div className="mb-12" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4">// contact</p>
-        <h2 className="text-6xl font-black text-white leading-tight mb-4">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
           Let us <span className="gradient-text">Connect</span>
         </h2>
         <p className="text-[#64748b] text-base max-w-md">
