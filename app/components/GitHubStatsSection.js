@@ -10,7 +10,8 @@ export default function GitHubStatsSection() {
           GitHub <span className="gradient-text">Stats</span>
         </h2>
         <p className="text-[#64748b] mt-2 sm:mt-3 text-sm sm:text-base">
-          Real-time contribution data from <span className="text-white font-semibold font-mono">github.com/Alfaturrahman</span>
+          Real-time contribution data from{" "}
+          <a href="https://github.com/Alfaturrahman" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 font-semibold font-mono transition-colors">github.com/Alfaturrahman</a>
         </p>
       </motion.div>
 
