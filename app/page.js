@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import AboutSection from "./components/AboutSection";
 import GitHubStatsSection from "./components/GitHubStatsSection";
@@ -33,6 +33,7 @@ const bounceRight = {
 export default function Home() {
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState(1);
+  const touchStartX = useRef(null);
 
   const go = (next) => {
     if (next < 0 || next >= SECTIONS.length) return;
@@ -102,7 +103,17 @@ export default function Home() {
       </header>
 
       {/* ── Slide Content ── */}
-      <div className="flex-1 relative overflow-hidden z-10">
+      <div className="flex-1 relative overflow-hidden z-10"
+        onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+        onTouchEnd={(e) => {
+          if (touchStartX.current === null) return;
+          const dx = e.changedTouches[0].clientX - touchStartX.current;
+          touchStartX.current = null;
+          if (Math.abs(dx) < 40) return;
+          if (dx < 0) go(current + 1);
+          else go(current - 1);
+        }}
+      >
         {/* Left arrow overlay */}
         {canPrev && (
           <motion.button
