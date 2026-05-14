@@ -51,13 +51,6 @@ const projects = [
     category: "Web App",
   },
   {
-    name: "Simpik App",
-    url: "https://github.com/Alfaturrahman/simpik-app",
-    description: "Cooperative savings and loan information system with member management and transaction tracking.",
-    badges: ["Laravel", "PHP", "Blade", "MySQL"],
-    category: "Web App",
-  },
-  {
     name: "App Ekios",
     url: "https://github.com/Alfaturrahman/App-Ekios",
     description: "Management application built with Laravel for handling business operations and data records.",
