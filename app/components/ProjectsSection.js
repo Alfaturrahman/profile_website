@@ -66,7 +66,7 @@ export default function ProjectsSection() {
   const rest = filtered.slice(1);
 
   return (
-    <div className="max-w-4xl">
+    <div className="max-w-4xl mx-auto">
       <motion.div className="mb-10" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4">// projects</p>
         <h2 className="text-6xl font-black text-white leading-tight">

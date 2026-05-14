@@ -10,7 +10,7 @@ const stats = [
 
 export default function AboutSection() {
   return (
-    <div className="max-w-4xl">
+    <div className="max-w-4xl mx-auto">
       <motion.div
         className="mb-16"
         initial={{ opacity: 0, y: 40 }}
