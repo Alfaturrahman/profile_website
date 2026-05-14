@@ -3,24 +3,39 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
-  // ── Featured (shown first) ──────────────────────────────────────
+  // ── Featured card (shown first, full-width) ──────────────────
   {
     name: "SmartNeighbour",
     url: "https://github.com/Alfaturrahman/SmartNeighbourhood-Web",
     apiUrl: "https://github.com/Alfaturrahman/SmartNeighbour-API",
-    description: "Community management platform — resident management, security scheduling, feedback, announcements, role-based access, and PWA support.",
+    description: "Community management platform — resident management, security scheduling, feedback, announcements, role-based access, and PWA (mobile-ready) support.",
     badges: ["Next.js 16", "TypeScript", "Django REST", "PostgreSQL", "PWA"],
     category: "Full-Stack",
     featured: true,
   },
+  // ── Initial grid (3 cards, diverse stack) ────────────────────
   {
     name: "Omahmu Web",
     url: "https://github.com/Alfaturrahman/Omahmu-web-next",
     description: "Property listing web app with modern UI and high performance built with Next.js.",
     badges: ["Next.js", "JavaScript", "Tailwind CSS"],
     category: "Full-Stack",
-    featured: true,
   },
+  {
+    name: "Airqu",
+    url: "https://github.com/Alfaturrahman/Airqu",
+    description: "Cross-platform mobile app for real-time air quality monitoring with live data visualization.",
+    badges: ["Flutter", "Dart", "Firebase"],
+    category: "Mobile",
+  },
+  {
+    name: "Load Testing Locust",
+    url: "https://github.com/Alfaturrahman/Load-Testing-Locust",
+    description: "API load testing and performance analysis simulating hundreds of concurrent users with Locust.",
+    badges: ["Python", "Locust", "REST API"],
+    category: "DevOps",
+  },
+  // ── More projects (behind Show More) ──────────────────────────
   {
     name: "EO App",
     url: "https://github.com/Alfaturrahman/EO-App",
@@ -28,7 +43,6 @@ const projects = [
     badges: ["Laravel", "PHP", "Blade", "MySQL"],
     category: "Web App",
   },
-  // ── More projects (behind Show More) ──────────────────────────
   {
     name: "Koperasi Merah Putih",
     url: "https://github.com/Alfaturrahman/Koperasi-Merah-Putih",
@@ -100,25 +114,11 @@ const projects = [
     category: "Backend",
   },
   {
-    name: "Airqu",
-    url: "https://github.com/Alfaturrahman/Airqu",
-    description: "Cross-platform mobile app for real-time air quality monitoring with live data visualization.",
-    badges: ["Flutter", "Dart", "Firebase"],
-    category: "Mobile",
-  },
-  {
     name: "nGo-ding",
     url: "https://github.com/Alfaturrahman/nGo-ding",
     description: "Flutter mobile application — functional mobile app built with Dart and Flutter framework.",
     badges: ["Flutter", "Dart"],
     category: "Mobile",
-  },
-  {
-    name: "Load Testing Locust",
-    url: "https://github.com/Alfaturrahman/Load-Testing-Locust",
-    description: "API load testing and performance analysis simulating hundreds of concurrent users with Locust.",
-    badges: ["Python", "Locust", "REST API"],
-    category: "DevOps",
   },
 ];
 
