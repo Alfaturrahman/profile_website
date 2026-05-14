@@ -1,77 +1,90 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
 
 const skillGroups = [
-  { category: "Backend",          icon: "BE", skills: ["Laravel", "Django REST", "Spring Boot", "PHP", "Python", "Java"] },
-  { category: "Frontend",         icon: "FE", skills: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Blade"] },
-  { category: "Mobile",           icon: "MB", skills: ["Flutter", "Dart", "Firebase"] },
-  { category: "Database & Tools", icon: "DB", skills: ["PostgreSQL", "MySQL", "Git", "GitHub", "Vercel", "Railway", "Locust"] },
+  { category: "Backend",          color: "indigo",  skills: ["Laravel", "Django REST", "Spring Boot", "PHP", "Python", "Java"] },
+  { category: "Frontend",         color: "violet",  skills: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Blade"] },
+  { category: "Mobile",           color: "sky",     skills: ["Flutter", "Dart", "Firebase"] },
+  { category: "Database & Tools", color: "emerald", skills: ["PostgreSQL", "MySQL", "Git", "GitHub", "Vercel", "Railway", "Locust"] },
 ];
 
 const experiences = [
-  { year: "2026", title: "SmartNeighbour Platform",    desc: "Full-stack community management system - Next.js 16, Django REST, PostgreSQL, PWA" },
-  { year: "2025", title: "EO App and Koperasi System", desc: "Laravel-based event organizer and cooperative management applications" },
-  { year: "2025", title: "Posvan API and Load Testing", desc: "REST API with Django plus Locust performance testing for high-traffic simulation" },
-  { year: "2024", title: "IoT and Mobile Apps",        desc: "IOTROVE mangrove monitoring IoT, API SAQELAR Spring Boot, Airqu Flutter" },
+  { year: "2026", title: "SmartNeighbour Platform",    desc: "Full-stack community management — Next.js 16, Django REST, PostgreSQL, PWA" },
+  { year: "2025", title: "EO App & Koperasi System",   desc: "Laravel-based event organizer and cooperative management applications" },
+  { year: "2025", title: "Posvan API & Load Testing",  desc: "REST API with Django + Locust performance testing for high-traffic simulation" },
+  { year: "2024", title: "IoT & Mobile Apps",          desc: "IOTROVE mangrove monitoring, API SAQELAR (Spring Boot), Airqu (Flutter)" },
 ];
 
-export default function ProfileSection() {
-  const [activeGroup, setActiveGroup] = useState(0);
+const colorMap = {
+  indigo:  { bg: "bg-indigo-500/10",  border: "border-indigo-500/20",  text: "text-indigo-400",  dot: "bg-indigo-500"  },
+  violet:  { bg: "bg-violet-500/10",  border: "border-violet-500/20",  text: "text-violet-400",  dot: "bg-violet-500"  },
+  sky:     { bg: "bg-sky-500/10",     border: "border-sky-500/20",     text: "text-sky-400",     dot: "bg-sky-500"     },
+  emerald: { bg: "bg-emerald-500/10", border: "border-emerald-500/20", text: "text-emerald-400", dot: "bg-emerald-500" },
+};
 
+export default function ProfileSection() {
   return (
-    <div className="flex flex-col gap-10">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-        <p className="text-indigo-400 font-semibold text-sm tracking-widest uppercase mb-1">Skills and Experience</p>
-        <h2 className="text-3xl font-bold text-white">
-          My <span className="gradient-text">Tech Stack</span>
+    <div className="max-w-4xl">
+      <motion.div className="mb-12" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+        <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4">// skills</p>
+        <h2 className="text-6xl font-black text-white leading-tight">
+          Tech <span className="gradient-text">Stack</span>
         </h2>
-        <p className="text-[#94a3b8] mt-2 max-w-xl">
-          Actively seeking <span className="text-white font-medium">Remote / Full-time</span> roles as Backend or Full-Stack Developer.
+        <p className="text-[#64748b] mt-3 text-base">
+          Seeking <span className="text-white font-semibold">Remote / Full-time</span> — Backend or Full-Stack roles.
         </p>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}>
-        <div className="flex flex-wrap gap-2 mb-5">
-          {skillGroups.map((g, i) => (
-            <button
-              key={g.category}
-              onClick={() => setActiveGroup(i)}
-              className={`text-sm font-semibold px-4 py-2 rounded-lg border transition-all ${
-                activeGroup === i
-                  ? "bg-indigo-600 border-indigo-500 text-white"
-                  : "bg-[#0f172a] border-indigo-500/20 text-[#94a3b8] hover:border-indigo-500/50"
-              }`}
+      <motion.div
+        className="grid md:grid-cols-2 gap-4 mb-20"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+      >
+        {skillGroups.map((group, gi) => {
+          const c = colorMap[group.color];
+          return (
+            <motion.div
+              key={group.category}
+              className={`${c.bg} border ${c.border} rounded-2xl p-6`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: gi * 0.08 }}
             >
-              {g.category}
-            </button>
-          ))}
-        </div>
-        <motion.div
-          key={activeGroup}
-          className="flex flex-wrap gap-3"
-          initial={{ opacity: 0, x: 10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.25 }}
-        >
-          {skillGroups[activeGroup].skills.map((skill) => (
-            <span key={skill} className="skill-badge">{skill}</span>
-          ))}
-        </motion.div>
+              <div className="flex items-center gap-2 mb-5">
+                <span className={`w-2 h-2 rounded-full shrink-0 ${c.dot}`} />
+                <h3 className={`text-xs font-black uppercase tracking-widest ${c.text}`}>{group.category}</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {group.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="text-xs bg-[#0a0f1e]/60 text-[#94a3b8] border border-white/5 px-2.5 py-1 rounded-lg font-medium"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
-        <h3 className="text-lg font-bold text-white mb-5">Journey and Projects</h3>
-        <div className="relative border-l-2 border-indigo-500/20 pl-6 space-y-6">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+        <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-8">// journey</p>
+        <div className="space-y-6">
           {experiences.map((exp, i) => (
-            <motion.div key={i} className="relative" initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.08 }}>
-              <div className="absolute -left-[29px] top-1 w-3 h-3 rounded-full bg-indigo-500 border-2 border-[#1e293b]" />
-              <div className="bg-[#0f172a] border border-indigo-500/10 rounded-xl p-4 hover:border-indigo-500/30 transition-colors">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-bold text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded">{exp.year}</span>
-                  <h4 className="font-semibold text-white text-sm">{exp.title}</h4>
-                </div>
-                <p className="text-[#94a3b8] text-sm">{exp.desc}</p>
+            <motion.div
+              key={i}
+              className="flex gap-8 group"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 + i * 0.07 }}
+            >
+              <span className="shrink-0 text-xs font-black text-indigo-400 font-mono w-10 pt-0.5">{exp.year}</span>
+              <div className="flex-1 pb-6 border-b border-white/5 last:border-0">
+                <h4 className="text-white font-bold text-sm mb-1">{exp.title}</h4>
+                <p className="text-[#64748b] text-sm leading-relaxed">{exp.desc}</p>
               </div>
             </motion.div>
           ))}

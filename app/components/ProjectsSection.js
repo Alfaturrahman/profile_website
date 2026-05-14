@@ -1,27 +1,28 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
     name: "SmartNeighbour",
     url: "https://github.com/Alfaturrahman/SmartNeighbourhood-Web",
     apiUrl: "https://github.com/Alfaturrahman/SmartNeighbour-API",
-    description: "Modern community management platform with resident management, security scheduling, feedback system, announcements, role-based access, and PWA support.",
+    description: "Modern community management platform — resident management, security scheduling, feedback, announcements, role-based access, and PWA support.",
     badges: ["Next.js 16", "TypeScript", "Django REST", "PostgreSQL", "PWA"],
     category: "Full-Stack",
+    featured: true,
   },
   {
     name: "EO App",
     url: "https://github.com/Alfaturrahman/EO-App",
-    description: "Complete Event Organizer management system from event registration and attendee data to detailed reports.",
+    description: "Complete Event Organizer system from event registration and attendee management to detailed reports.",
     badges: ["Laravel", "PHP", "Blade", "MySQL"],
     category: "Web App",
   },
   {
     name: "Koperasi Merah Putih",
     url: "https://github.com/Alfaturrahman/Koperasi-Merah-Putih",
-    description: "Digital cooperative management app that handles members, savings, loans, and financial transactions.",
+    description: "Digital cooperative management — handles members, savings, loans, and financial transactions.",
     badges: ["Laravel", "PHP", "Blade", "MySQL"],
     category: "Web App",
   },
@@ -42,7 +43,7 @@ const projects = [
   {
     name: "Load Testing Locust",
     url: "https://github.com/Alfaturrahman/Load-Testing-Locust",
-    description: "API load testing and performance analysis project using Locust to simulate hundreds of concurrent users.",
+    description: "API load testing and performance analysis simulating hundreds of concurrent users with Locust.",
     badges: ["Python", "Locust", "REST API"],
     category: "DevOps",
   },
@@ -50,36 +51,43 @@ const projects = [
 
 const categories = ["All", "Full-Stack", "Web App", "Mobile", "DevOps"];
 
-const categoryColors = {
-  "Full-Stack": "text-indigo-400 bg-indigo-500/10 border-indigo-500/30",
-  "Web App":    "text-violet-400 bg-violet-500/10 border-violet-500/30",
-  "Mobile":     "text-sky-400 bg-sky-500/10 border-sky-500/30",
-  "DevOps":     "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+const catBadge = {
+  "Full-Stack": "text-indigo-400 bg-indigo-500/10 border-indigo-500/25",
+  "Web App":    "text-violet-400 bg-violet-500/10 border-violet-500/25",
+  "Mobile":     "text-sky-400    bg-sky-500/10    border-sky-500/25",
+  "DevOps":     "text-emerald-400 bg-emerald-500/10 border-emerald-500/25",
 };
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState("All");
+
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
+  const featured = filtered[0];
+  const rest = filtered.slice(1);
 
   return (
-    <div className="flex flex-col gap-8">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <p className="text-indigo-400 font-semibold text-sm tracking-widest uppercase mb-1">Portfolio</p>
-        <h2 className="text-3xl font-bold text-white">
-          Featured <span className="gradient-text">Projects</span>
+    <div className="max-w-4xl">
+      <motion.div className="mb-10" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+        <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4">// projects</p>
+        <h2 className="text-6xl font-black text-white leading-tight">
+          Featured <span className="gradient-text">Work</span>
         </h2>
-        <p className="text-[#94a3b8] mt-2">Real-world applications built with modern tech stacks.</p>
       </motion.div>
 
-      <motion.div className="flex flex-wrap gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 }}>
+      <motion.div
+        className="flex flex-wrap gap-2 mb-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setFilter(cat)}
-            className={`text-xs font-semibold px-4 py-2 rounded-lg border transition-all ${
+            className={`text-xs font-bold px-4 py-2 rounded-xl border transition-all ${
               filter === cat
                 ? "bg-indigo-600 border-indigo-500 text-white"
-                : "bg-[#0f172a] border-indigo-500/20 text-[#94a3b8] hover:border-indigo-500/40"
+                : "bg-transparent border-white/8 text-[#475569] hover:border-indigo-500/30 hover:text-[#94a3b8]"
             }`}
           >
             {cat}
@@ -87,44 +95,85 @@ export default function ProjectsSection() {
         ))}
       </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-5">
-        {filtered.map((project, i) => (
-          <motion.div
-            key={project.name}
-            className="bg-[#0f172a] border border-indigo-500/10 rounded-xl p-6 flex flex-col gap-4 hover:border-indigo-500/30 transition-all group"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.06 }}
-          >
-            <div className="flex items-start justify-between">
-              <span className="text-white font-bold text-lg">{project.name}</span>
-              <span className={`text-xs font-bold px-2 py-1 rounded border ${categoryColors[project.category]}`}>
-                {project.category}
-              </span>
-            </div>
-            <p className="text-[#94a3b8] text-sm leading-relaxed flex-1">{project.description}</p>
-            <div className="flex flex-wrap gap-2">
-              {project.badges.map((badge) => (
-                <span key={badge} className="text-xs bg-[#1e293b] text-[#94a3b8] border border-white/5 px-2 py-1 rounded-md">
-                  {badge}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={filter}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -5 }}
+          transition={{ duration: 0.2 }}
+        >
+          {featured && (
+            <a
+              href={featured.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mb-6 bg-gradient-to-br from-indigo-500/10 via-violet-500/5 to-transparent border border-indigo-500/20 hover:border-indigo-500/50 rounded-2xl p-8 transition-all group"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1.5">Featured Project</span>
+                  <h3 className="text-2xl font-black text-white group-hover:text-indigo-300 transition-colors">{featured.name}</h3>
+                </div>
+                <span className={`text-xs font-bold px-2.5 py-1 rounded-lg border shrink-0 ${catBadge[featured.category]}`}>
+                  {featured.category}
                 </span>
+              </div>
+              <p className="text-[#94a3b8] text-sm leading-relaxed mb-5">{featured.description}</p>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {featured.badges.map((b) => (
+                  <span key={b} className="text-xs bg-[#0a0f1e] text-[#64748b] border border-white/5 px-2.5 py-1 rounded-lg">{b}</span>
+                ))}
+              </div>
+              <div className="flex gap-5">
+                <span className="text-xs font-bold text-indigo-400 group-hover:text-indigo-300 transition-colors">View Code →</span>
+                {featured.apiUrl && (
+                  <a
+                    href={featured.apiUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-xs font-bold text-violet-400 hover:text-violet-300 transition-colors"
+                  >
+                    API Repo →
+                  </a>
+                )}
+              </div>
+            </a>
+          )}
+
+          {rest.length > 0 && (
+            <div className="grid md:grid-cols-2 gap-4">
+              {rest.map((project, i) => (
+                <motion.a
+                  key={project.name}
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block bg-[#0d1424] border border-white/5 hover:border-indigo-500/25 rounded-2xl p-6 transition-all group"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.06 }}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <h3 className="text-white font-bold group-hover:text-indigo-300 transition-colors">{project.name}</h3>
+                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded border shrink-0 ml-2 ${catBadge[project.category]}`}>
+                      {project.category}
+                    </span>
+                  </div>
+                  <p className="text-[#64748b] text-sm leading-relaxed mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.badges.map((b) => (
+                      <span key={b} className="text-[11px] bg-[#0a0f1e] text-[#475569] border border-white/5 px-2 py-0.5 rounded-md">{b}</span>
+                    ))}
+                  </div>
+                  <span className="text-xs font-bold text-indigo-400 group-hover:text-indigo-300 transition-colors">View Code →</span>
+                </motion.a>
               ))}
             </div>
-            <div className="flex gap-4 pt-1">
-              <a href={project.url} target="_blank" rel="noopener noreferrer"
-                className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
-                View Code
-              </a>
-              {project.apiUrl && (
-                <a href={project.apiUrl} target="_blank" rel="noopener noreferrer"
-                  className="text-xs font-semibold text-violet-400 hover:text-violet-300 transition-colors">
-                  API Repo
-                </a>
-              )}
-            </div>
-          </motion.div>
-        ))}
-      </div>
+          )}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
