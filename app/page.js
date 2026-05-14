@@ -108,7 +108,7 @@ export default function Home() {
           <motion.button
             onClick={() => go(current - 1)}
             animate={bounceLeft}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#0d1424]/90 border border-white/8 hover:border-indigo-500/50 hover:bg-indigo-500/15 flex items-center justify-center text-[#334155] hover:text-indigo-300 transition-all text-base shadow-lg backdrop-blur-sm"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/20 border border-indigo-500/50 hover:bg-indigo-500/40 hover:border-indigo-400 flex items-center justify-center text-indigo-300 hover:text-white transition-all text-lg font-bold shadow-lg shadow-indigo-500/20 backdrop-blur-sm"
           >
             ←
           </motion.button>
@@ -118,7 +118,7 @@ export default function Home() {
           <motion.button
             onClick={() => go(current + 1)}
             animate={bounceRight}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#0d1424]/90 border border-white/8 hover:border-indigo-500/50 hover:bg-indigo-500/15 flex items-center justify-center text-[#334155] hover:text-indigo-300 transition-all text-base shadow-lg backdrop-blur-sm"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-indigo-500/20 border border-indigo-500/50 hover:bg-indigo-500/40 hover:border-indigo-400 flex items-center justify-center text-indigo-300 hover:text-white transition-all text-lg font-bold shadow-lg shadow-indigo-500/20 backdrop-blur-sm"
           >
             →
           </motion.button>
@@ -135,8 +135,10 @@ export default function Home() {
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="absolute inset-0 overflow-y-auto"
           >
-            <div className="min-h-full px-10 sm:px-14 lg:px-20 py-8 sm:py-10 max-w-5xl mx-auto">
-              <Section />
+            <div className="min-h-full flex flex-col justify-center px-10 sm:px-14 lg:px-20 py-8 sm:py-10">
+              <div className="max-w-5xl mx-auto w-full">
+                <Section />
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>
