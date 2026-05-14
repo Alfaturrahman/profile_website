@@ -132,7 +132,7 @@ const catBadge = {
   "DevOps":     "text-emerald-400 bg-emerald-500/10 border-emerald-500/25",
 };
 
-const INITIAL_SHOW = 3; // featured + 3 grid cards = 4 total
+const INITIAL_SHOW = 4;
 
 export default function ProjectsSection() {
   const [filter, setFilter] = useState("All");
@@ -234,7 +234,7 @@ export default function ProjectsSection() {
           {/* Grid cards */}
           {rest.length > 0 && (
             <>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                 {visibleRest.map((project, i) => (
                   <motion.a
                     key={project.name}
