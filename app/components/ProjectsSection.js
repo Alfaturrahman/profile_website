@@ -155,7 +155,7 @@ export default function ProjectsSection() {
     <div className="max-w-4xl mx-auto w-full">
       <motion.div className="mb-6 sm:mb-8" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-3 sm:mb-4">// projects</p>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[var(--text-primary)] leading-tight">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
           Featured <span className="gradient-text">Work</span>
         </h2>
       </motion.div>
@@ -173,7 +173,7 @@ export default function ProjectsSection() {
             className={`text-xs font-bold px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl border transition-all ${
               filter === cat
                 ? "bg-indigo-600 border-indigo-500 text-white"
-                : "bg-transparent border-[var(--border-medium)] text-[var(--text-dim)] hover:border-indigo-500/30 hover:text-[var(--text-secondary)]"
+                : "bg-transparent border-white/8 text-[#475569] hover:border-indigo-500/30 hover:text-[#94a3b8]"
             }`}
           >
             {cat}
@@ -202,16 +202,16 @@ export default function ProjectsSection() {
                   <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">
                     {featured.featured ? "Featured Project" : "Top Result"}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] group-hover:text-indigo-300 transition-colors">{featured.name}</h3>
+                  <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-indigo-300 transition-colors">{featured.name}</h3>
                 </div>
                 <span className={`text-xs font-bold px-2.5 py-1 rounded-lg border shrink-0 ml-3 ${catBadge[featured.category]}`}>
                   {featured.category}
                 </span>
               </div>
-              <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-4">{featured.description}</p>
+              <p className="text-[#94a3b8] text-sm leading-relaxed mb-4">{featured.description}</p>
               <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
                 {featured.badges.map((b) => (
-                  <span key={b} className="text-xs bg-[var(--bg-badge)] text-[var(--text-muted)] border border-[var(--border-subtle)] px-2.5 py-1 rounded-lg">{b}</span>
+                  <span key={b} className="text-xs bg-[#0a0f1e] text-[#64748b] border border-white/5 px-2.5 py-1 rounded-lg">{b}</span>
                 ))}
               </div>
               <div className="flex gap-4 sm:gap-5">
@@ -241,21 +241,21 @@ export default function ProjectsSection() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-indigo-500/25 rounded-2xl p-4 sm:p-5 transition-all group"
+                    className="block bg-[#0d1424] border border-white/5 hover:border-indigo-500/25 rounded-2xl p-4 sm:p-5 transition-all group"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
                   >
                     <div className="flex items-start justify-between mb-2.5">
-                      <h3 className="text-[var(--text-primary)] font-bold text-sm group-hover:text-indigo-300 transition-colors">{project.name}</h3>
+                      <h3 className="text-white font-bold text-sm group-hover:text-indigo-300 transition-colors">{project.name}</h3>
                       <span className={`text-[10px] font-bold px-2 py-0.5 rounded border shrink-0 ml-2 ${catBadge[project.category]}`}>
                         {project.category}
                       </span>
                     </div>
-                    <p className="text-[var(--text-muted)] text-xs leading-relaxed mb-3">{project.description}</p>
+                    <p className="text-[#64748b] text-xs leading-relaxed mb-3">{project.description}</p>
                     <div className="flex flex-wrap gap-1 mb-3">
                       {project.badges.map((b) => (
-                        <span key={b} className="text-[10px] bg-[var(--bg-badge)] text-[var(--text-dim)] border border-[var(--border-subtle)] px-1.5 py-0.5 rounded-md">{b}</span>
+                        <span key={b} className="text-[10px] bg-[#0a0f1e] text-[#475569] border border-white/5 px-1.5 py-0.5 rounded-md">{b}</span>
                       ))}
                     </div>
                     <span className="text-xs font-bold text-indigo-400 group-hover:text-indigo-300 transition-colors">View Code →</span>
@@ -278,7 +278,7 @@ export default function ProjectsSection() {
               {showAll && rest.length > INITIAL_SHOW && (
                 <button
                   onClick={() => setShowAll(false)}
-                  className="mt-4 w-full py-2.5 rounded-xl border border-[var(--border-subtle)] hover:border-[var(--border-medium)] text-[var(--text-dim)] hover:text-[var(--text-muted)] text-xs font-bold transition-all"
+                  className="mt-4 w-full py-2.5 rounded-xl border border-white/5 hover:border-white/10 text-[#475569] hover:text-[#64748b] text-xs font-bold transition-all"
                 >
                   Show Less ↑
                 </button>

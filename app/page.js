@@ -54,7 +54,7 @@ export default function Home() {
   const canNext = current < SECTIONS.length - 1;
 
   return (
-    <div className="h-[100dvh] bg-[var(--bg-base)] bg-grid text-[var(--text-primary)] flex flex-col overflow-hidden">
+    <div className="h-[100dvh] bg-[#0a0f1e] bg-grid text-[#f1f5f9] flex flex-col overflow-hidden">
       {/* Ambient glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-0 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-indigo-600 opacity-5 rounded-full blur-3xl" />
@@ -62,7 +62,7 @@ export default function Home() {
       </div>
 
       {/* ── Header ── */}
-      <header className="shrink-0 flex items-center justify-between px-4 sm:px-8 h-14 sm:h-16 border-b border-[var(--border-subtle)] backdrop-blur-md z-20" style={{ backgroundColor: "var(--bg-header-t80)" }}>
+      <header className="shrink-0 flex items-center justify-between px-4 sm:px-8 h-14 sm:h-16 border-b border-white/5 bg-[#070c18]/80 backdrop-blur-md z-20">
         {/* Brand */}
         <div className="flex items-center gap-2.5">
           <div className="relative shrink-0">
@@ -71,10 +71,10 @@ export default function Home() {
               alt="Alfaturrahman"
               className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl object-cover border border-indigo-500/30"
             />
-            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-400 rounded-full border border-[var(--bg-base)]" />
+            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-400 rounded-full border border-[#070c18]" />
           </div>
           <span className="text-white font-bold text-sm">Alfaturrahman</span>
-          <span className="text-[var(--text-nav)] text-xs font-mono hidden sm:block">.{SECTIONS[current].id}</span>
+          <span className="text-[#1e2d3d] text-xs font-mono hidden sm:block">.{SECTIONS[current].id}</span>
         </div>
 
         {/* Nav */}
@@ -85,7 +85,7 @@ export default function Home() {
               onClick={() => go(i)}
               className={`relative text-xs font-bold rounded-lg transition-all
                 px-1.5 py-1 sm:px-3 sm:py-1.5
-                ${i === current ? "text-[var(--text-primary)]" : "text-[var(--text-nav)] hover:text-[var(--text-muted)]"}`}
+                ${i === current ? "text-white" : "text-[#1e2d3d] hover:text-[#64748b]"}`}
             >
               {i === current && (
                 <motion.span
@@ -145,7 +145,7 @@ export default function Home() {
       </div>
 
       {/* ── Footer ── */}
-      <footer className="shrink-0 flex items-center justify-center gap-4 sm:gap-6 px-4 h-12 sm:h-14 border-t border-[var(--border-subtle)] backdrop-blur-md z-20" style={{ backgroundColor: "var(--bg-header-t60)" }}>
+      <footer className="shrink-0 flex items-center justify-center gap-4 sm:gap-6 px-4 h-12 sm:h-14 border-t border-white/5 bg-[#070c18]/60 backdrop-blur-md z-20">
         {/* Dot indicators */}
         <div className="flex items-center gap-2">
           {SECTIONS.map((_, i) => (
@@ -153,15 +153,16 @@ export default function Home() {
               <motion.div
                 animate={{
                   width: i === current ? 24 : 5,
-                  opacity: i === current ? 1 : 0.55,
+                  backgroundColor: i === current ? "#818cf8" : "#1e293b",
+                  opacity: i === current ? 1 : 0.6,
                 }}
                 transition={{ type: "spring", stiffness: 500, damping: 40 }}
-                className={`h-1.5 rounded-full ${i === current ? "bg-indigo-400" : "bg-[var(--dot-inactive)]"}`}
+                className="h-1.5 rounded-full"
               />
             </button>
           ))}
         </div>
-        <span className="text-[var(--text-nav)] text-[10px] font-mono tabular-nums">
+        <span className="text-[#1e293b] text-[10px] font-mono tabular-nums">
           {String(current + 1).padStart(2, "0")}/{String(SECTIONS.length).padStart(2, "0")}
         </span>
       </footer>

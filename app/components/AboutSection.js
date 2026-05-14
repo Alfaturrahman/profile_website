@@ -20,12 +20,12 @@ export default function AboutSection() {
         <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4 sm:mb-6">
           // backend and full-stack developer
         </p>
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-[var(--text-primary)] leading-[1.04] tracking-tight mb-5 sm:mb-8">
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.04] tracking-tight mb-5 sm:mb-8">
           I build<br />
           <span className="gradient-text">backend</span><br />
           systems.
         </h1>
-        <p className="text-[var(--text-muted)] text-base sm:text-lg leading-relaxed max-w-lg">
+        <p className="text-[#64748b] text-base sm:text-lg leading-relaxed max-w-lg">
           Scalable REST APIs, full-stack web apps, and mobile solutions — from concept to deployment.
         </p>
         <a
@@ -53,8 +53,8 @@ export default function AboutSection() {
           className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl object-cover border border-indigo-500/25 shadow-lg shadow-indigo-500/10 shrink-0"
         />
         <div>
-          <h2 className="text-[var(--text-primary)] font-bold text-lg sm:text-xl">Alfaturrahman</h2>
-          <p className="text-[var(--text-muted)] text-sm mt-0.5">Batam, Indonesia</p>
+          <h2 className="text-white font-bold text-lg sm:text-xl">Alfaturrahman</h2>
+          <p className="text-[#64748b] text-sm mt-0.5">Batam, Indonesia</p>
           <div className="flex flex-wrap gap-2 mt-2">
             <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-bold bg-green-500/10 border border-green-500/20 text-green-400 px-2.5 py-1 rounded-full">
               <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
@@ -81,7 +81,7 @@ export default function AboutSection() {
             transition={{ delay: 0.4 + i * 0.07 }}
           >
             <p className="text-4xl sm:text-5xl font-black gradient-text leading-none">{s.value}</p>
-            <p className="text-[var(--text-faint)] text-[10px] sm:text-xs font-bold mt-2 uppercase tracking-widest">{s.label}</p>
+            <p className="text-[#334155] text-[10px] sm:text-xs font-bold mt-2 uppercase tracking-widest">{s.label}</p>
           </motion.div>
         ))}
       </motion.div>
