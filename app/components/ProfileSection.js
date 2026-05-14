@@ -2,13 +2,14 @@
 import { motion } from "framer-motion";
 
 const skillGroups = [
-  { category: "Backend",          color: "indigo",  skills: ["Laravel", "Django REST", "Spring Boot", "PHP", "Python", "Java"] },
+  { category: "Backend",          color: "indigo",  skills: ["Laravel", "Django REST", "Spring Boot", ".NET Core", "C#", "PHP", "Python", "Java"] },
   { category: "Frontend",         color: "violet",  skills: ["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Blade"] },
   { category: "Mobile",           color: "sky",     skills: ["Flutter", "Dart", "Firebase"] },
   { category: "Database & Tools", color: "emerald", skills: ["PostgreSQL", "MySQL", "Git", "GitHub", "Vercel", "Railway", "Locust"] },
 ];
 
 const experiences = [
+  { year: "2026", title: "Internship — Manufacturing (.NET Core)", desc: "Backend development using .NET Core / C# in a manufacturing industry environment — ongoing" },
   { year: "2026", title: "SmartNeighbour Platform",    desc: "Full-stack community management — Next.js 16, Django REST, PostgreSQL, PWA" },
   { year: "2025", title: "EO App & Koperasi System",   desc: "Laravel-based event organizer and cooperative management applications" },
   { year: "2025", title: "Posvan API & Load Testing",  desc: "REST API with Django + Locust performance testing for high-traffic simulation" },
