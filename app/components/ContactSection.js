@@ -31,12 +31,12 @@ export default function ContactSection() {
     <div className="max-w-4xl mx-auto">
       <motion.div className="mb-12" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4">// contact</p>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[var(--text-primary)] leading-tight mb-4">
           Let us <span className="gradient-text">Connect</span>
         </h2>
-        <p className="text-[#64748b] text-base max-w-md">
-          I am actively looking for{" "}
-          <span className="text-white font-semibold">Remote / Full-time</span>{" "}
+          <p className="text-[var(--text-muted)] text-base max-w-md">
+          I am actively looking for{"\ "}
+          <span className="text-[var(--text-primary)] font-semibold">Remote / Full-time</span>{"\ "}
           positions as a Backend or Full-Stack Developer.
         </p>
       </motion.div>
@@ -68,7 +68,7 @@ export default function ContactSection() {
               href={c.href}
               target={c.href.startsWith("mailto") ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className={`flex items-center justify-between bg-[#0d1424] border border-white/5 ${a.border} ${a.bg} rounded-xl px-6 py-4 transition-all group`}
+              className={`flex items-center justify-between bg-[var(--bg-card)] border border-[var(--border-subtle)] ${a.border} ${a.bg} rounded-xl px-6 py-4 transition-all group`}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.15 + i * 0.05 }}
@@ -77,7 +77,7 @@ export default function ContactSection() {
                 <span className={`text-xs font-black uppercase tracking-widest w-20 shrink-0 ${a.label}`}>
                   {c.label}
                 </span>
-                <span className="text-white text-sm font-medium">{c.value}</span>
+                <span className="text-[var(--text-primary)] text-sm font-medium">{c.value}</span>
               </div>
               <span className={`text-sm ${a.label} opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-200`}>
                 →
@@ -89,19 +89,19 @@ export default function ContactSection() {
 
       <motion.button
         onClick={handleCopy}
-        className="flex items-center gap-3 text-sm font-bold text-[#475569] hover:text-indigo-400 transition-colors mb-20"
+        className="flex items-center gap-3 text-sm font-bold text-[var(--text-dim)] hover:text-indigo-400 transition-colors mb-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.45 }}
       >
-        <span className="w-8 h-8 rounded-lg bg-[#0d1424] border border-white/5 flex items-center justify-center text-xs">
+        <span className="w-8 h-8 rounded-lg bg-[var(--bg-card)] border border-[var(--border-subtle)] flex items-center justify-center text-xs">
           ⎘
         </span>
         {copied ? "Copied to clipboard!" : "Copy email address"}
       </motion.button>
 
       <motion.blockquote
-        className="border-l-2 border-indigo-500/30 pl-5 text-[#334155] italic text-sm max-w-lg"
+        className="border-l-2 border-indigo-500/30 pl-5 text-[var(--text-faint)] italic text-sm max-w-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}

@@ -27,11 +27,11 @@ export default function ProfileSection() {
     <div className="max-w-4xl mx-auto">
       <motion.div className="mb-12" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <p className="text-indigo-400 text-xs font-mono tracking-widest uppercase mb-4">// skills</p>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[var(--text-primary)] leading-tight">
           Tech <span className="gradient-text">Stack</span>
         </h2>
-        <p className="text-[#64748b] mt-3 text-base">
-          Seeking <span className="text-white font-semibold">Remote / Full-time</span> — Backend or Full-Stack roles.
+        <p className="text-[var(--text-muted)] mt-3 text-base">
+          Seeking <span className="text-[var(--text-primary)] font-semibold">Remote / Full-time</span> — Backend or Full-Stack roles.
         </p>
       </motion.div>
 
@@ -59,7 +59,7 @@ export default function ProfileSection() {
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs bg-[#0a0f1e]/60 text-[#94a3b8] border border-white/5 px-2.5 py-1 rounded-lg font-medium"
+                    className="text-xs bg-[var(--bg-skill)] text-[var(--text-secondary)] border border-[var(--border-subtle)] px-2.5 py-1 rounded-lg font-medium"
                   >
                     {skill}
                   </span>
@@ -82,9 +82,9 @@ export default function ProfileSection() {
               transition={{ delay: 0.3 + i * 0.07 }}
             >
               <span className="shrink-0 text-xs font-black text-indigo-400 font-mono w-10 pt-0.5">{exp.year}</span>
-              <div className="flex-1 pb-6 border-b border-white/5 last:border-0">
-                <h4 className="text-white font-bold text-sm mb-1">{exp.title}</h4>
-                <p className="text-[#64748b] text-sm leading-relaxed">{exp.desc}</p>
+              <div className="flex-1 pb-6 border-b border-[var(--border-subtle)] last:border-0">
+                <h4 className="text-[var(--text-primary)] font-bold text-sm mb-1">{exp.title}</h4>
+                <p className="text-[var(--text-muted)] text-sm leading-relaxed">{exp.desc}</p>
               </div>
             </motion.div>
           ))}
