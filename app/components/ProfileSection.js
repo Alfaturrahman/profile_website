@@ -52,12 +52,12 @@ export default function ProfileSection() {
         transition={{ duration: 0.5, delay: 0.6 }}
       >
         <img
-          src="https://img.shields.io/badge/Ready%20for-Internship-272635?style=flat&logo=internship&logoColor=white" // badge warna gelap
-          alt="Ready for Internship"
+          src="https://img.shields.io/badge/Open%20for-Remote%20%26%20Full--time-272635?style=flat&logoColor=white"
+          alt="Open for Remote & Full-time"
         />
         <img
-          src="https://img.shields.io/badge/Open%20to-Freelance%20Work-272635?style=flat&logo=freelancer&logoColor=white" // badge warna gelap
-          alt="Open to Freelance"
+          src="https://img.shields.io/badge/Status-Actively%20Job%20Seeking-4CAF50?style=flat&logoColor=white"
+          alt="Actively Job Seeking"
         />
       </motion.div>
 
@@ -73,12 +73,10 @@ export default function ProfileSection() {
           <b>Software Engineering Technology (TRPL)</b>
         </li>
         <li>
-          💼 Actively looking for an <b>internship opportunity</b> in backend or
-          full-stack web development
+          💼 Aktif mencari posisi <b>Full-time / Remote</b> sebagai Backend atau Full-Stack Developer
         </li>
         <li>
-          🧑‍💻 Also open for <b>freelance projects</b> (website, app, or system
-          development)
+          🌍 Terbuka untuk <b>remote work</b> maupun <b>on-site</b> di berbagai kota
         </li>
         <li>
           🌱 Currently learning <b>Next.js</b>, <b>Spring Boot</b>, and improving

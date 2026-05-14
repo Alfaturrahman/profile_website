@@ -1,18 +1,18 @@
-// components/AboutSection.tsx
+// components/AboutSection.js
 "use client";
 import { motion } from "framer-motion";
 
 export default function AboutSection() {
   return (
     <motion.div
-      className="grid md:grid-cols-2 gap-12 items-center text-[#272635]"
+      className="flex flex-col gap-10 text-[#272635]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Bio */}
+      {/* Hero Bio */}
       <motion.div
-        className="flex flex-col items-center text-center md:items-start md:text-left gap-4"
+        className="flex flex-col md:flex-row items-center gap-8"
         initial={{ x: -30, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -20,37 +20,46 @@ export default function AboutSection() {
         <img
           src="/Profile_pict.jpeg"
           alt="Profile"
-          className="w-40 h-40 rounded-full border-4 border-[#CECECE] object-cover"
+          className="w-36 h-36 rounded-full border-4 border-[#272635] object-cover shadow-lg"
         />
-        <div>
-          <h2 className="text-3xl font-bold text-[#272635] mb-2">
+        <div className="text-center md:text-left">
+          <h2 className="text-3xl font-bold text-[#272635] mb-1">
             Hi, I'm Alfaturrahman 👋
           </h2>
-          <p className="text-[#A6A6A8]">
-            TRPL student passionate about real-world apps & scalable backends.
+          <p className="text-lg font-medium text-[#272635] mb-2">
+            Backend & Full-Stack Developer
           </p>
-          <p className="text-sm text-[#A6A6A8]">
-            Exploring Laravel, Spring Boot, and Next.js. Enjoy clean code and purposeful design.
+          <p className="text-[#A6A6A8] mb-3">
+            Passionate about <b>digitalisasi</b> — mengubah proses manual menjadi solusi digital yang berdampak nyata. Berpengalaman membangun Web App, REST API, Mobile App, dan sistem IoT.
           </p>
+          <div className="flex flex-wrap justify-center md:justify-start gap-2">
+            <span className="bg-[#272635] text-white text-xs font-semibold px-3 py-1 rounded-full">🟢 Open for Remote & Full-time</span>
+            <span className="bg-[#E8E9F3] text-[#272635] text-xs font-semibold px-3 py-1 rounded-full border border-[#CECECE]">📍 Batam, Indonesia</span>
+          </div>
         </div>
       </motion.div>
 
-      {/* GitHub Stats */}
+      {/* Stats */}
       <motion.div
-        className="flex flex-col items-center gap-4"
-        initial={{ x: 30, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        className="grid md:grid-cols-2 gap-4 items-start"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}
       >
         <img
-          src="https://github-readme-stats.vercel.app/api?username=Alfaturrahman&show_icons=true&theme=default"
+          src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Alfaturrahman&theme=nord_bright"
           alt="GitHub Stats"
-          className="w-full max-w-md rounded-md"
+          className="w-full rounded-lg shadow"
         />
         <img
-          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alfaturrahman&layout=compact&theme=default"
+          src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Alfaturrahman&theme=nord_bright"
           alt="Top Languages"
-          className="w-full max-w-md rounded-md"
+          className="w-full rounded-lg shadow"
+        />
+        <img
+          src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Alfaturrahman&theme=nord_bright"
+          alt="Profile Details"
+          className="w-full rounded-lg shadow md:col-span-2"
         />
       </motion.div>
     </motion.div>

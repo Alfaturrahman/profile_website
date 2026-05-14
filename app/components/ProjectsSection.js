@@ -5,25 +5,46 @@ import { motion } from "framer-motion";
 export default function ProjectsSection() {
   const projects = [
     {
-      name: "LMS Udinus",
-      url: "https://lms-udinus.web.app",
+      name: "🏘️ SmartNeighbour",
+      url: "https://github.com/Alfaturrahman/SmartNeighbourhood-Web",
       description:
-        "Learning Management System for Udinus university, with backend using Spring Boot, database MySQL, and frontend React.js.",
-      badges: ["React.js", "Spring Boot", "MySQL", "Tailwind CSS"],
+        "Platform manajemen komunitas perumahan modern. Fitur lengkap: manajemen warga, jadwal keamanan, feedback, pengumuman, role-based access & PWA.",
+      badges: ["Next.js 16", "TypeScript", "Django REST", "PostgreSQL", "PWA"],
     },
     {
-      name: "Sistem Informasi Akademik",
-      url: "https://siak-adrian.web.app",
+      name: "🎪 EO App",
+      url: "https://github.com/Alfaturrahman/EO-App",
       description:
-        "Academic Information System for students and faculty with features like scheduling, grades, and attendance, built with Laravel and Bootstrap.",
-      badges: ["Laravel", "PHP", "Bootstrap", "MySQL"],
+        "Sistem manajemen Event Organizer lengkap — dari pendataan event, peserta, hingga laporan acara.",
+      badges: ["Laravel", "PHP", "Blade", "MySQL"],
     },
     {
-      name: "Portfolio Website",
-      url: "https://alfaturrahman.vercel.app",
+      name: "🏦 Koperasi Merah Putih",
+      url: "https://github.com/Alfaturrahman/Koperasi-Merah-Putih",
       description:
-        "My personal portfolio website built with Next.js and Tailwind CSS to showcase my projects and skills.",
-      badges: ["Next.js", "Tailwind CSS", "React"],
+        "Aplikasi manajemen koperasi digital — mengelola anggota, simpanan, pinjaman, dan transaksi keuangan.",
+      badges: ["Laravel", "PHP", "Blade", "MySQL"],
+    },
+    {
+      name: "🏠 Omahmu Web",
+      url: "https://github.com/Alfaturrahman/Omahmu-web-next",
+      description:
+        "Aplikasi properti berbasis web dengan tampilan modern dan performa tinggi menggunakan Next.js.",
+      badges: ["Next.js", "JavaScript", "Tailwind CSS"],
+    },
+    {
+      name: "🌬️ Airqu",
+      url: "https://github.com/Alfaturrahman/Airqu",
+      description:
+        "Aplikasi mobile cross-platform untuk monitoring kualitas udara secara real-time berbasis Flutter.",
+      badges: ["Flutter", "Dart", "Firebase"],
+    },
+    {
+      name: "📡 Load Testing (Locust)",
+      url: "https://github.com/Alfaturrahman/Load-Testing-Locust",
+      description:
+        "Proyek load testing & performance analysis API menggunakan Locust untuk simulasi ratusan pengguna secara bersamaan.",
+      badges: ["Python", "Locust", "REST API"],
     },
   ];
 
